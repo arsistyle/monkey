@@ -1,0 +1,236 @@
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+@function header($key: 1) {
+  @if $key == xs {
+    @return 50px;
+  } @else {
+    @return 70px;
+  }
+}
+
+$theme-colors: (
+  'primary': #219653,
+  'negro': #333333,
+  'gris': #67758d,
+  'gris-1': #ecf2f5,
+  'error': #e50027,
+  'done': #7ac098,
+  'info': #3086eb,
+);
+$font-family-sans-serif: 'Montserrat', sans-serif;
+
+/*
+* INCLUDES
+*/
+
+// Helpers
+// @import './helpers/colors.scss';
+
+// Externals
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
+@import './external/datatable-bs4.scss';
+@import './external/datatables.net-fixedheader-dt.scss';
+// @import './external/datatables.net-select-dt.scss';
+@import './external/datatables.net-rowreorder-dt.scss';
+
+// Pages
+@import './pages/login.scss';
+
+// Components
+@import './components/header.scss';
+@import './components/menu.scss';
+@import './components/banner.scss';
+@import './components/forms.scss';
+@import './components/actividades.scss';
+@import './components/lightbox.scss';
+@import './components/breadcrumbs.scss';
+@import './components/tablas.scss';
+@import './components/filtro.scss';
+@import './components/nav.scss';
+@import './components/orden-detalle.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: header(xs);
+  background: rgba(theme-color('gris'), 0.1) url('../assets/bg.png') center center no-repeat;
+  @include media-breakpoint-up(md) {
+    padding-top: header();
+  }
+}
+
+.wrapper {
+  padding: 0 5px 5px;
+  @include media-breakpoint-up(md) {
+    padding: 0 15px 15px;
+  }
+  &__container {
+    min-height: calc(100vh - #{header(xs)} - 100px);
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    h1 {
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    @include media-breakpoint-up(md) {
+      padding: 30px;
+    }
+  }
+}
+
+.welcome {
+  text-align: center;
+  padding: 30px 15px;
+  h1 {
+    font-weight: 700;
+  }
+}
+
+.content {
+  padding: 30px;
+  border-radius: 8px;
+  background: white;
+}
+
+/*
+* Custom 
+*/
+
+%bgdp {
+  background-image: none !important;
+}
+
+.datepicker {
+  padding: 1rem;
+  z-index: 9999 !important;
+  table {
+    tr {
+      td {
+        &.active {
+          background-color: theme-color() !important;
+          @extend %bgdp;
+          color: white;
+          &:hover {
+            @extend %bgdp;
+          }
+        }
+        &.today {
+          background-color: rgba(theme-color(), 0.3) !important;
+          @extend %bgdp;
+          &:hover {
+            @extend %bgdp;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table {
+  // overflow-x: auto;
+  display: block;
+  &__icons {
+    &__item {
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+  thead {
+    th {
+      vertical-align: top;
+      white-space: nowrap;
+    }
+  }
+  tbody {
+    td {
+      font-family: 'Roboto', sans-serif;
+      color: theme-color('gris');
+    }
+  }
+  tr {
+    &:hover {
+      > td {
+        background: rgba(theme-color('gris'), 0.2);
+      }
+    }
+    &.active {
+      > td {
+        background: rgba(theme-color('gris'), 0.4);
+      }
+    }
+  }
+  &-bg {
+    background: rgba(theme-color('gris'), 0.3);
+  }
+  &-child {
+    padding: 0 !important;
+    tr,
+    tr:hover {
+      background: none !important;
+    }
+    table {
+      margin-bottom: 0;
+      width: calc(30px * 7);
+      td,
+      th {
+        border: 0;
+        width: 30px;
+        min-width: 0;
+        font-size: 8px;
+        text-align: center;
+        background: none !important;
+      }
+    }
+  }
+  .dataTables_scrollHead &{
+    overflow: hidden;
+  }
+}
+.data-table {
+  th {
+    min-width: 100px;
+  }
+}
+
+.dataTables_scrollBody {
+  width: auto !important;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    svg {
+      margin-left: 10px;
+    }
+  }
+}
+
+.input-group {
+  flex-wrap: nowrap;
+  &-prepend {
+    width: 100%;
+  }
+}
+
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: 0;
+}
