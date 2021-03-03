@@ -1,0 +1,36 @@
+body {
+  background: gris(96);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(https://arsi.cl/static/media/pattern-contactme.768fc9a4.png);
+  background-size: 400px;
+  animation: bg 90s linear infinite forwards;
+  .home {
+    background: rgba(gris(100),.5);
+    padding: 5vw;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 50px 100px -50px rgba($primario, 0.1);
+    backdrop-filter: blur(4px);
+    h1 {
+      margin-top: 0;
+      line-height: 1;
+    }
+  }
+}
+
+@keyframes bg {
+  0% {
+    background-position: 400px 400px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

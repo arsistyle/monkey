@@ -8,13 +8,6 @@ const ASSET_PATH = process.env.ASSET_PATH || "/";
 
 const HTMLS = [
   "index",
-  "login",
-  "mantenedor-equipos",
-  "seguimiento-ordenes",
-  "seguimiento-ordenes-detalle",
-  "mantenedor-nodos",
-  "mantenedor-nodos-especialidades",
-  "componentes",
 ];
 
 module.exports = {
@@ -33,11 +26,6 @@ module.exports = {
     open: true
   },
   module: {
-    // devServer: {
-    //   contentBase: path.join(__dirname, ""),
-    //   compress: true,
-    //   port: 9000,
-    // },
     rules: [
       // HTML
       {
@@ -80,12 +68,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery'",
-      "window.$": "jquery",
-    }),
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    //   "window.jQuery": "jquery'",
+    //   "window.$": "jquery",
+    // }),
     ...HTMLS.map(
       (x) =>
         new HtmlWebpackPlugin({
@@ -98,9 +86,9 @@ module.exports = {
     new BeautifyHtmlWebpackPlugin(),
     new MiniCssExtractPlugin(),
   ],
-  resolve: {
-    alias: {
-      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     "jquery-ui": "jquery-ui-dist/jquery-ui.js",
+  //   },
+  // },
 };

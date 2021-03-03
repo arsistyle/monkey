@@ -5,8 +5,18 @@ html(lang="es")
     main
       include ./includes/header
       include ./includes/menu
-      .banner
-        .banner__container
-          h1.banner__title ¡Bienvenido a SPP!
-          h3.banner__subtitle Sistema de Planificación de la Producción
+      section.home
+        h1 
+          small This is <br>
+          span Monkey 🐵
+        p Esta es una librería para comenzar con tus proyectos en Webpack
+        p Pensada para trabajar con JS (ES6), SCSS y PUG
+        .separador 
+        p Clonar desde Github 
+        p 
+          code.code.code--dark https://github.com/arsistyle/monkey.git
+        .separador 
+        p O si prefieres descargarlo 
+          .text-alig-center-xs 
+            a.btn.btn--primario(href="https://github.com/arsistyle/monkey/archive/master.zip") Descargar 
       include ./includes/footer

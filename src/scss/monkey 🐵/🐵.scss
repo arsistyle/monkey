@@ -1,0 +1,21 @@
+@import 'CONFIG';
+
+// Auxiliares
+@import "auxiliares/functions";
+@import "auxiliares/variables";
+@import "auxiliares/mediaqueries";
+@import "auxiliares/mixins";
+
+// Base
+@import "base/debug";
+@import "base/general";
+@import "base/tipografias";
+@import "base/alineaciones";
+
+// Componentes
+@import "componentes/codigo";
+@import "componentes/botones";
+@import "componentes/alertas";
+
+// Estilos default, comentar o eliminar
+@import "default";
